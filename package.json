@@ -4,6 +4,7 @@
     "description": "Open Integration Hub filter component to filter incoming data based on arbitrary expression. Based on elastic.io filter component version.",
     "homepage": "https://www.openintegrationhub.com",
     "scripts": {
+        "start": "node ./node_modules/ferryman/runGlobal.js",
         "pretest": "eslint lib spec --fix",
         "test": "mocha spec --recursive"
     },
@@ -11,10 +12,7 @@
         "node": "14"
     },
     "dependencies": {
-        "@elastic.io/component-commons-library": "1.1.2",
-        "@elastic.io/component-logger": "0.0.1",
-        "elasticio-node": "0.0.9",
-        "elasticio-sailor-nodejs": "2.6.7",
+        "@openintegrationhub/ferryman": "1.5.7",
         "moment": "2.29.1",
         "request": "2.88.2",
         "request-promise": "4.2.4"

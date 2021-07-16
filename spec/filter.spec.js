@@ -18,7 +18,7 @@ const self = {
 
 describe('Test old filter', () => {
   const msg = {
-    body: {
+    data: {
       foo: 20,
       bar: 'foo',
       float: 20.4,
@@ -39,19 +39,19 @@ describe('Test old filter', () => {
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
     it('foo > 5', async () => {
-      await action.process.call(self, msg, { condition: 'body.foo > 5' });
+      await action.process.call(self, msg, { condition: 'data.foo > 5' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
     it('parseFloat(flString) > 2', async () => {
-      await action.process.call(self, msg, { condition: 'parseFloat(body.flString) > 2' });
+      await action.process.call(self, msg, { condition: 'parseFloat(data.flString) > 2' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
     it('flString > 20', async () => {
-      await action.process.call(self, msg, { condition: 'body.flString > 20' });
+      await action.process.call(self, msg, { condition: 'data.flString > 20' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
     it('moment(iso8601).day() == 1', async () => {
-      await action.process.call(self, msg, { condition: 'moment(body.iso8601).day() == 1' });
+      await action.process.call(self, msg, { condition: 'moment(data.iso8601).day() == 1' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
   });
@@ -66,15 +66,15 @@ describe('Test old filter', () => {
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
     it('foo > 20', async () => {
-      await action.process.call(self, msg, { condition: 'body.foo > 20' });
+      await action.process.call(self, msg, { condition: 'data.foo > 20' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
     it('parseFloat(flString) > 2', async () => {
-      await action.process.call(self, msg, { condition: 'parseFloat(body.flString) > 20.4' });
+      await action.process.call(self, msg, { condition: 'parseFloat(data.flString) > 20.4' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
     it('flString > 20', async () => {
-      await action.process.call(self, msg, { condition: 'body.flString > 20.4' });
+      await action.process.call(self, msg, { condition: 'data.flString > 20.4' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
   });
