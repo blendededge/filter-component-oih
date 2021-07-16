@@ -1,6 +1,6 @@
 {
     "title": "Filter",
-    "description": "elastic.io filter component to filter incoming data based on arbitrary expression",
+    "description": "Open Integration Hub filter component to filter incoming data based on arbitrary expression",
     "buildType": "docker",
     "actions": {
         "filter": {

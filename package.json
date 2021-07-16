@@ -1,8 +1,8 @@
 {
-    "name": "filter-component",
-    "version": "1.1.1",
-    "description": "elastic.io filter component to filter incoming data based on arbitrary expression",
-    "homepage": "https://www.elastic.io",
+    "name": "filter-component-oih",
+    "version": "1.0.0",
+    "description": "Open Integration Hub filter component to filter incoming data based on arbitrary expression. Based on elastic.io filter component version.",
+    "homepage": "https://www.openintegrationhub.com",
     "scripts": {
         "pretest": "eslint lib spec --fix",
         "test": "mocha spec --recursive"
@@ -11,10 +11,10 @@
         "node": "14"
     },
     "dependencies": {
-        "@elastic.io/component-commons-library": "1.1.5",
+        "@elastic.io/component-commons-library": "1.1.2",
         "@elastic.io/component-logger": "0.0.1",
         "elasticio-node": "0.0.9",
-        "elasticio-sailor-nodejs": "2.6.24",
+        "elasticio-sailor-nodejs": "2.6.7",
         "moment": "2.29.1",
         "request": "2.88.2",
         "request-promise": "4.2.4"
@@ -39,16 +39,17 @@
         }
     },
     "keywords": [
-        "elasticio",
+        "openintegrationhub",
         "filter",
         "ipaas",
-        "elasticio-component"
+        "integration",
+        "component"
     ],
     "author": {
-        "name": "elastic.io GmbH",
-        "email": "info@elastic.io",
-        "url": "https://www.elastic.io"
+        "name": "Blended Edge LLC",
+        "email": "info@blendededge.com",
+        "url": "https://blendededge.com"
     },
-    "repository": "elasticio/filter-component",
+    "repository": "blendededge/filter-component",
     "license": "Apache-2.0"
 }
