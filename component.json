@@ -13,7 +13,7 @@
                     "label": "Filter condition",
                     "viewClass": "TextFieldWithNoteView",
                     "required": true,
-                    "placeholder": "body.value > 100",
+                    "placeholder": "data.value > 100",
                     "note": "You can type any JavaScript expression here, if it is evaluated to <i>false</i> message will be rejected."
                 },
                 "reject": {
@@ -43,7 +43,7 @@
                 },
                 "addMetadataToResponse": {
                     "label": "Metadata To Response",
-                    "Note": "Adding passthrough from a previous step to message body as `elasticioMeta` variable, if enabled",
+                    "Note": "Adding passthrough from a previous step to message data as `openIntegrationHubMeta` variable, if enabled",
                     "viewClass": "CheckBoxView"
                 }
             }

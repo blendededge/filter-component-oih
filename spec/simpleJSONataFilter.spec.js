@@ -17,7 +17,7 @@ const self = {
 
 describe('Test filter', () => {
   const simpleMsg = {
-    body: {
+    data: {
       hello: 'world',
     },
   };
@@ -43,19 +43,19 @@ describe('Test filter', () => {
     const passthroughMsg = {
       passthrough: {
         step_2: {
-          body: {
+          data: {
             two: 'sample',
           },
         },
         step_1: {
-          body: {
+          data: {
             one: 'sample',
           },
         },
       },
-      body: {
+      data: {
         step_2: {
-          body: {
+          data: {
             two: 'sample',
           },
         },
@@ -69,20 +69,20 @@ describe('Test filter', () => {
     const passthroughErrorMsg = {
       passthrough: {
         step_2: {
-          body: {
+          data: {
             two: 'sample',
           },
         },
         step_1: {
-          body: {
+          data: {
             one: 'sample',
           },
         },
       },
-      body: {
+      data: {
         elasticio: {},
         step_2: {
-          body: {
+          data: {
             two: 'sample',
           },
         },
@@ -102,19 +102,19 @@ describe('Test filter', () => {
     const msg = {
       passthrough: {
         step_2: {
-          body: {
+          data: {
             two: 'sample2',
           },
         },
         step_1: {
-          body: {
+          data: {
             one: 'sample1',
           },
         },
       },
-      body: {
+      data: {
         step_2: {
-          body: {
+          data: {
             two: 'sample2',
           },
         },
@@ -175,7 +175,7 @@ describe('Test filter', () => {
   };
 
   const passthroughCondition = {
-    expression: 'elasticio.step_1.body.one = elasticio.step_2.body.two',
+    expression: 'elasticio.step_1.data.one = elasticio.step_2.data.two',
   };
 
   describe('Should emit message', async () => {
@@ -194,28 +194,28 @@ describe('Test filter', () => {
       stepId: 'step_2',
       headers: {},
       passthrough: {
-        step_2: { stepId: 'step_2', headers: {}, body: { result: 'Hello world!' } },
+        step_2: { stepId: 'step_2', headers: {}, data: { result: 'Hello world!' } },
         step_1: {
-          body: { lastPoll: '4750-04-19T10:05:52.098Z', fireTime: '2701-02-20T02:58:30.890Z' },
+          data: { lastPoll: '4750-04-19T10:05:52.098Z', fireTime: '2701-02-20T02:58:30.890Z' },
         },
       },
-      body: { result: 'Hello world!' },
+      data: { result: 'Hello world!' },
     };
     const configuration = { expression: '0!=1' };
 
     it('addMetadataToResponse enabled', async () => {
       configuration.addMetadataToResponse = true;
       await action.process.call(self, JSON.parse(JSON.stringify(msg)), configuration);
-      expect(self.emit.getCall(0).args[1].body).to.deep.equal({
-        elasticioMeta: {
+      expect(self.emit.getCall(0).args[1].data).to.deep.equal({
+        openIntegrationHubMeta: {
           step_1: {
-            body: {
+            data: {
               fireTime: '2701-02-20T02:58:30.890Z',
               lastPoll: '4750-04-19T10:05:52.098Z',
             },
           },
           step_2: {
-            body: {
+            data: {
               result: 'Hello world!',
             },
             headers: {},
@@ -229,7 +229,7 @@ describe('Test filter', () => {
     it('addMetadataToResponse disabled', async () => {
       configuration.addMetadataToResponse = false;
       await action.process.call(self, JSON.parse(JSON.stringify(msg)), configuration);
-      expect(self.emit.getCall(0).args[1].body).to.deep.equal({
+      expect(self.emit.getCall(0).args[1].data).to.deep.equal({
         result: 'Hello world!',
       });
     });

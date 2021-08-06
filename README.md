@@ -15,7 +15,7 @@ Here are some examples that are possible:
 *   `$not(false)`
 *   `$not(true)`
 *    `20 > 5`
-*   `body.foo` - will be true if `body.foo` is defined and not `false`
+*   `data.foo` - will be true if `data.foo` is defined and not `false`
 
 ## Requirements
 
@@ -40,7 +40,7 @@ it is evaluated to `false`, a message will be logged to the console and the msg 
 Checkbox:
 * If checked, the checkbox adds `Assertion` functionality. Instead of doing nothing, the component will throw an error when the condition is not met.
 
-* `Metadata To Response` Adding passthrough from a previous step to message body as `elasticioMeta` variable, if enabled.
+* `Metadata To Response` Adding passthrough from a previous step to message data as `openIntegrationHubMeta` variable, if enabled.
 
 ## Additional Notes
 
