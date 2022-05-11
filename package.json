@@ -12,8 +12,8 @@
         "node": "14"
     },
     "dependencies": {
-        "@blendededge/ferryman-extensions": "^1.0.4",
-        "@openintegrationhub/ferryman": "1.5.7",
+        "@blendededge/ferryman-extensions": "^1.1.2",
+        "@openintegrationhub/ferryman": "^2.1.0",
         "moment": "2.29.2",
         "request": "2.88.2",
         "request-promise": "4.2.4"
