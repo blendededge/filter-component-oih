@@ -1,6 +1,6 @@
 {
     "name": "filter-component-oih",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "Open Integration Hub filter component to filter incoming data based on arbitrary expression. Based on elastic.io filter component version.",
     "homepage": "https://www.openintegrationhub.com",
     "scripts": {
@@ -14,7 +14,7 @@
     "dependencies": {
         "@blendededge/ferryman-extensions": "^1.2.1",
         "@openintegrationhub/ferryman": "^2.1.1",
-        "moment": "2.29.2",
+        "moment": "2.29.4",
         "request": "2.88.2",
         "request-promise": "4.2.4"
     },
