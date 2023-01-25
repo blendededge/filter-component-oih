@@ -16,6 +16,7 @@ RUN apk update && apk add --no-cache \
 RUN npm install --production
 
 FROM base AS release
+ENV ELASTICIO_OTEL_SERVICE_NAME=COMPONENT:FILTER
 COPY --from=dependencies /app/node_modules ./node_modules
 RUN chown -R node:node .
 USER node
