@@ -3,7 +3,6 @@ const sinon = require('sinon');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const nock = require('nock');
-const bunyan = require('bunyan');
 
 const action = require('../lib/actions/filter');
 
@@ -11,9 +10,10 @@ chai.use(chaiAsPromised);
 
 const self = {
   emit: sinon.spy(),
-  logger: bunyan.createLogger({
-    name: 'dummy',
-  }),
+  logger: {
+    info: () => {},
+    warn: () => {},
+  },
 };
 
 describe('Test old filter', () => {
@@ -25,6 +25,7 @@ describe('Test old filter', () => {
       flString: '20.4',
       iso8601: '1995-12-25',
     },
+    metadata: {},
   };
 
   afterEach(() => { self.emit.resetHistory(); });
