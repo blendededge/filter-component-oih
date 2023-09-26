@@ -10,7 +10,7 @@ COPY logo.png logo.png
 
 FROM base AS dependencies
 RUN apk update && apk add --no-cache \
-    python2 \
+    python3 \
     g++ \
     make
 RUN npm install --production
