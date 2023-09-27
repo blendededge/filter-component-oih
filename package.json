@@ -1,6 +1,6 @@
 {
     "name": "filter-component-oih",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "description": "Open Integration Hub filter component to filter incoming data based on arbitrary expression. Based on elastic.io filter component version.",
     "homepage": "https://www.openintegrationhub.com",
     "scripts": {
