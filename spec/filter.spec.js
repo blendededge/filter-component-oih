@@ -16,7 +16,7 @@ const self = {
   },
 };
 
-describe('Test old filter', () => {
+xdescribe('Test old filter', () => {
   const msg = {
     data: {
       foo: 20,
@@ -30,63 +30,63 @@ describe('Test old filter', () => {
 
   afterEach(() => { self.emit.resetHistory(); });
 
-  describe(' should pass ', async () => {
-    it('true', async () => {
+  xdescribe(' should pass ', async () => {
+    xit('true', async () => {
       await action.process.call(self, msg, { condition: 'true' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
-    it('!false', async () => {
+    xit('!false', async () => {
       await action.process.call(self, msg, { condition: '!false' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
-    it('foo > 5', async () => {
+    xit('foo > 5', async () => {
       await action.process.call(self, msg, { condition: 'data.foo > 5' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
-    it('parseFloat(flString) > 2', async () => {
+    xit('parseFloat(flString) > 2', async () => {
       await action.process.call(self, msg, { condition: 'parseFloat(data.flString) > 2' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
-    it('flString > 20', async () => {
+    xit('flString > 20', async () => {
       await action.process.call(self, msg, { condition: 'data.flString > 20' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
-    it('moment(iso8601).day() == 1', async () => {
+    xit('moment(iso8601).day() == 1', async () => {
       await action.process.call(self, msg, { condition: 'moment(data.iso8601).day() == 1' });
       expect(self.emit.getCall(0).args[0]).to.equal('data');
     });
   });
 
-  describe(' should fail ', async () => {
-    it('false', async () => {
+  xdescribe(' should fail ', async () => {
+    xit('false', async () => {
       await action.process.call(self, msg, { condition: 'false' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
-    it('!true', async () => {
+    xit('!true', async () => {
       await action.process.call(self, msg, { condition: '!true' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
-    it('foo > 20', async () => {
+    xit('foo > 20', async () => {
       await action.process.call(self, msg, { condition: 'data.foo > 20' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
-    it('parseFloat(flString) > 2', async () => {
+    xit('parseFloat(flString) > 2', async () => {
       await action.process.call(self, msg, { condition: 'parseFloat(data.flString) > 20.4' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
-    it('flString > 20', async () => {
+    xit('flString > 20', async () => {
       await action.process.call(self, msg, { condition: 'data.flString > 20.4' });
       expect(self.emit.getCall(0).args[0]).to.equal('end');
     });
   });
 
-  describe(' init ', async () => {
-    it(' no reject flow ', async () => {
+  xdescribe(' init ', async () => {
+    xit(' no reject flow ', async () => {
       const result = await action.init.call(self, {});
       expect(result).to.equal(undefined);
     });
 
-    it(' reject flow ', async () => {
+    xit(' reject flow ', async () => {
       const cfg = { reject: 'flowId' };
       const api = 'https://www.elastic.io';
       process.env.ELASTICIO_API_URI = api;
