@@ -12,6 +12,7 @@ const self = {
   logger: {
     info: () => {},
     error: sinon.spy(),
+    child: () => self.logger,
   },
 };
 
