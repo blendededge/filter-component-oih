@@ -9,11 +9,12 @@
         "test": "mocha spec --recursive"
     },
     "engines": {
-        "node": "16"
+        "node": ">=16"
     },
     "dependencies": {
         "@blendededge/ferryman-extensions": "^2.0.3",
-        "@openintegrationhub/ferryman": "^2.3.0"
+        "@openintegrationhub/ferryman": "^2.3.0",
+        "jsonata": "^2.0.3"
     },
     "devDependencies": {
         "bunyan": "1.8.12",
