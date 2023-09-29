@@ -38,7 +38,7 @@ Parameters:
 it is evaluated to `false`, a message will be logged to the console and the msg will not be sent forward to the next component. If evaluated `true`, a message will be passed forward along with all data that passed the condition.
 
 Checkbox:
-* If checked, the checkbox adds `Assertion` functionality. Instead of doing nothing, the component will throw an error when the condition is not met.
+* If checked, the checkbox adds `assertion` functionality. Instead of doing nothing, the component will throw an error when the condition is not met.
 
 * `Metadata To Response` Adding passthrough from a previous step to message data as `openIntegrationHubMeta` variable, if enabled.
 

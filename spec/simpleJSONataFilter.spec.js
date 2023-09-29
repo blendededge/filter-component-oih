@@ -10,6 +10,7 @@ chai.use(chaiAsPromised);
 const self = {
   emit: sinon.spy(),
   logger: {
+    debug: () => {},
     info: () => {},
     error: sinon.spy(),
     child: () => self.logger,
