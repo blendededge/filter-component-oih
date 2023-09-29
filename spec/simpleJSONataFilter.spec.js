@@ -260,4 +260,44 @@ describe('Test filter', () => {
     });
     it(passthroughCondition.expression, async () => { await assertionTest(passthroughCondition); });
   });
+
+  describe('Negative testing', async () => {
+    // Test for Empty JSON objects
+    it('should handle empty JSON objects', async () => {
+      const msg = { data: {} };
+      const cfg = { expression: '$sum(**)' };
+      const result = await action.process.call(self, msg, cfg);
+      await expect(result).to.be.undefined;
+    });
+
+    // Test for Invalid JSONata expressions
+    it('should handle invalid JSONata expressions', async () => {
+      const msg = { data: { field: 'value' } };
+      const cfg = { expression: 'INVALID EXPRESSION' };
+      await action.process.call(self, msg, cfg).catch((err) => {
+        expect(err.message).to.be.equal('Syntax error: "EXPRESSION"');
+        expect(err.code).to.be.equal('S0201');
+        expect(err.token).to.be.equal('EXPRESSION');
+        expect(err.position).to.be.equal(18);
+      });
+    });
+
+    // Test for Incorrect JSON structures
+    it('should handle incorrect JSON structures', async () => {
+      const msg = 'This is not a valid JSON object';
+      const cfg = { expression: '$sum(**)' };
+      // eslint-disable-next-line no-unused-expressions
+      expect(await action.process.call(self, msg, cfg)).to.be.undefined;
+    });
+
+    // Performance test
+    it('should complete within acceptable time', async () => {
+      const msg = { data: { array: Array(10000).fill(1) } };
+      const cfg = { expression: '$sum(data.array)' };
+      const start = Date.now();
+      await action.process.call(self, msg, cfg);
+      const end = Date.now();
+      expect(end - start).to.be.lessThan(200); // Less than 200 milliseconds
+    });
+  });
 });
