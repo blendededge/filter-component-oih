@@ -12,7 +12,7 @@
         "node": ">=16"
     },
     "dependencies": {
-        "@blendededge/ferryman-extensions": "^2.0.4",
+        "@blendededge/ferryman-extensions": "^2.0.6",
         "@openintegrationhub/ferryman": "^2.3.1",
         "jsonata": "^2.0.3"
     },
