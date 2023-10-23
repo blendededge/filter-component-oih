@@ -195,8 +195,21 @@ describe('Test filter', () => {
     it(passthroughCondition.expression, async () => {
       await passthroughFilter(passthroughCondition);
     });
-  });
+    it('should evaluate whole message and not just msg.data', async () => {
+      const msg = { data: { field: 'value' }, passthrough: { meta: 'someMeta' } };
+      const cfg = { expression: '$exists(passthrough.meta)', addMetadataToResponse: true };
+      const snapshots = {};
+      const msgHeaders = {};
+      const tokenData = {};
 
+      await action.process.call(self, msg, cfg, snapshots, msgHeaders, tokenData);
+
+      // eslint-disable-next-line no-unused-expressions
+      expect(self.emit.calledWith('data')).to.be.true;
+      const emittedMessage = self.emit.getCall(0).args[1];
+      expect(emittedMessage.data).to.eql({ field: 'value', openIntegrationHubMeta: { meta: 'someMeta' } });
+    });
+  });
   describe('Should move elasticio variable', async () => {
     const msg = {
       stepId: 'step_2',
